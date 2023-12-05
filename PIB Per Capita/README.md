@@ -1,11 +1,5 @@
 # Perguntas - GDP Per Person (1901-2011)
 
-Projeto final do curso/módulo de Pandas. Neste projeto, você deve responder a um conjunto de perguntas feitas a dois conjuntos de dados:
-
-1. [GDP Per Person (1901-2011)](https://www.kaggle.com/divyansh22/gdp-per-person-19012011?select=GDP.csv)
-
-Tais conjuntos de dados são públicos foram publicados no Kaggle. Mais instruções sobre cada um deles podem ser encontrados nos links acima.
-
 ```python
 mport pandas as pd
 import numpy as np
@@ -15,7 +9,7 @@ df_gdp = pd.read_csv("gdp.csv", decimal=".")
 df_gdp = pd.DataFrame(data)
 ```
 
-- Limpe o conjunto de dados, convertendo strings em datas ou float, quando necessário.
+### 1 - Limpe o conjunto de dados, convertendo strings em datas ou float, quando necessário.
 
 ```python
 df_gdp['GDP_pp'] = df_gdp[' GDP_pp '] # Criando uma nova coluna
@@ -29,7 +23,7 @@ del df_gdp['GDP_pp']
 
 ```
 
-- Você conseguiria informar o primeiro valor registrado de cada país?
+### 2 - Você conseguiria informar o primeiro valor registrado de cada país?
 
 
 ```python
@@ -53,7 +47,7 @@ df_gdp.groupby('Country')['GDP'].min()
     Zimbabwe        385.69
     Name: GDP, Length: 193, dtype: float64
 
-- Informe as regiões com maiores crescimentos de PIB per capita no século passado.
+### 3 - Informe as regiões com maiores crescimentos de PIB per capita no século passado.
 
 
 
@@ -77,7 +71,7 @@ df_gdp_end = df_gdp[df_gdp['Year'] == 1996]
     Middle East, North Africa, and Greater Arabia    857.215950
     Name: GDP, dtype: float64
 
-- Preecha os anos ausentes em cada país com uma estimativa, baseada na diferença entre o próximo registro e o anterior.
+### 4- Preecha os anos ausentes em cada país com uma estimativa, baseada na diferença entre o próximo registro e o anterior.
 
 
 ```python
@@ -91,4 +85,5 @@ ax.set_ylabel('PIB per capita')
 ax.set_title('Evolução do PIB per capita do Brasil ao longo dos anos')
 ```   
 ![png](assets/img.png)
-```
+- Os pontos em Verde são os anos em que foram coletado (Em 5 e 5 anos).
+- Os pontos em laranja são as estimativas ano a ano.

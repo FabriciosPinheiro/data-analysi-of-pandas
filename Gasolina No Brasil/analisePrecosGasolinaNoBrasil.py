@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-import datetime
 
 # 1. Carregue os conjuntos de dados "gasolina_2000+.csv" e "gasolina_2010+.csv"
 #  em dois DataFrames diferentes e combine-os em um único DataFrame.

@@ -1,134 +1,12 @@
 # Projeto final
 
-Projeto final do curso/módulo de Pandas.
-Neste projeto, você deve responder a um conjunto de perguntas feitas a dois conjuntos de dados:
-
-1. [Obesity among adults by country, 1975-2016](https://www.kaggle.com/amanarora/obesity-among-adults-by-country-19752016/)
-
-
-Tais conjuntos de dados são públicos foram publicados no Kaggle. Mais instruções sobre cada um deles podem ser encontrados nos links acima.
 
 ```python
 import pandas as pd
 import numpy as np
 ```
 
-## Perguntas - Obesity among adults by country, 1975-2016
-
-```python
-df_obesity = pd.read_csv("obesity_cleaned.csv", index_col=0)
-df_obesity
-```
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Country</th>
-      <th>Year</th>
-      <th>Obesity (%)</th>
-      <th>Sex</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Afghanistan</td>
-      <td>1975</td>
-      <td>0.5 [0.2-1.1]</td>
-      <td>Both sexes</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Afghanistan</td>
-      <td>1975</td>
-      <td>0.2 [0.0-0.6]</td>
-      <td>Male</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Afghanistan</td>
-      <td>1975</td>
-      <td>0.8 [0.2-2.0]</td>
-      <td>Female</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Afghanistan</td>
-      <td>1976</td>
-      <td>0.5 [0.2-1.1]</td>
-      <td>Both sexes</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Afghanistan</td>
-      <td>1976</td>
-      <td>0.2 [0.0-0.7]</td>
-      <td>Male</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>24565</th>
-      <td>Zimbabwe</td>
-      <td>2015</td>
-      <td>4.5 [2.4-7.6]</td>
-      <td>Male</td>
-    </tr>
-    <tr>
-      <th>24566</th>
-      <td>Zimbabwe</td>
-      <td>2015</td>
-      <td>24.8 [18.9-31.3]</td>
-      <td>Female</td>
-    </tr>
-    <tr>
-      <th>24567</th>
-      <td>Zimbabwe</td>
-      <td>2016</td>
-      <td>15.5 [12.0-19.2]</td>
-      <td>Both sexes</td>
-    </tr>
-    <tr>
-      <th>24568</th>
-      <td>Zimbabwe</td>
-      <td>2016</td>
-      <td>4.7 [2.5-8.0]</td>
-      <td>Male</td>
-    </tr>
-    <tr>
-      <th>24569</th>
-      <td>Zimbabwe</td>
-      <td>2016</td>
-      <td>25.3 [19.1-32.0]</td>
-      <td>Female</td>
-    </tr>
-  </tbody>
-</table>
-<p>24570 rows × 4 columns</p>
-</div>
-
-
-
-- Limpe os dados do DataFrame, criando uma coluna de nome 'Obesity' que conterá os valores de obesidade. Transforme em float as colunas que porventura foram importadas como string.
+### 1 - Limpe os dados do DataFrame, criando uma coluna de nome 'Obesity' que conterá os valores de obesidade. Transforme em float as colunas que porventura foram importadas como string.
 
 
 ```python
@@ -158,124 +36,13 @@ df_obesity['Obesity (%)'].value_counts() # Existem valores de obsidade não cole
     Name: count, Length: 16375, dtype: int64
 
 
-- Cria uma nova coluna copiando os dados da Obesity (%) e Corta os valores de porcentagem de obsidade pelo índixe 0 da String
-
-```python
-del df_obesity['Obesity (%)'] # Apaga a coluna
-```
-
+### 2 - Cria uma nova coluna copiando os dados da Obesity (%) e Corta os valores de porcentagem de obsidade pelo índixe 0 da String.
 
 ```python
 df_obesity
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Country</th>
-      <th>Sex</th>
-      <th>Obesity</th>
-    </tr>
-    <tr>
-      <th>Year</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1975</th>
-      <td>Afghanistan</td>
-      <td>Both sexes</td>
-      <td>0.5</td>
-    </tr>
-    <tr>
-      <th>1975</th>
-      <td>Afghanistan</td>
-      <td>Male</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>1975</th>
-      <td>Afghanistan</td>
-      <td>Female</td>
-      <td>0.8</td>
-    </tr>
-    <tr>
-      <th>1976</th>
-      <td>Afghanistan</td>
-      <td>Both sexes</td>
-      <td>0.5</td>
-    </tr>
-    <tr>
-      <th>1976</th>
-      <td>Afghanistan</td>
-      <td>Male</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2015</th>
-      <td>Zimbabwe</td>
-      <td>Male</td>
-      <td>4.5</td>
-    </tr>
-    <tr>
-      <th>2015</th>
-      <td>Zimbabwe</td>
-      <td>Female</td>
-      <td>24.8</td>
-    </tr>
-    <tr>
-      <th>2016</th>
-      <td>Zimbabwe</td>
-      <td>Both sexes</td>
-      <td>15.5</td>
-    </tr>
-    <tr>
-      <th>2016</th>
-      <td>Zimbabwe</td>
-      <td>Male</td>
-      <td>4.7</td>
-    </tr>
-    <tr>
-      <th>2016</th>
-      <td>Zimbabwe</td>
-      <td>Female</td>
-      <td>25.3</td>
-    </tr>
-  </tbody>
-</table>
-<p>24570 rows × 3 columns</p>
-</div>
-
-
-
-- Qual o percentual médio de obesidade por sexo no mundo no ano de 2015?
+### 3 - Qual o percentual médio de obesidade por sexo no mundo no ano de 2015?
 
 
 ```python
@@ -327,8 +94,7 @@ df_obesity[df_obesity.index == 2015].groupby('Sex').mean('Obesity') # Retorna um
 
 
 
-- Quais são os 5 países com a maior e a menor taxa de aumento nos índices de obesidade no período observado?
-
+### 4 - Quais são os 5 países com a maior e a menor taxa de aumento nos índices de obesidade no período observado?
 
 ```python
 df_obesity_start = df_obesity[df_obesity.index == 1975]
